@@ -9,6 +9,16 @@
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 
+    <modules>
+        <module>litetext-io</module>
+    </modules>
+
+    <properties>
+        <log4j.version>2.9.1</log4j.version>
+        <tetragon.module.version>1.0-SNAPSHOT</tetragon.module.version>
+        <testng.version>6.11</testng.version>
+    </properties>
+
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -28,6 +38,12 @@
                 <artifactId>testng</artifactId>
                 <version>${testng.version}</version>
                 <scope>test</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>com.yarachkin.litetext</groupId>
+                <artifactId>litetext-io</artifactId>
+                <version>${tetragon.module.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
