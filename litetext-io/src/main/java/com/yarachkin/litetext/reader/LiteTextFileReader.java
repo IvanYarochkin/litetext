@@ -1,7 +1,7 @@
 package com.yarachkin.litetext.reader;
 
-import com.yarachkin.litetext.exception.IOLitetextException;
-import com.yarachkin.litetext.filehelper.LitetextFileHelper;
+import com.yarachkin.litetext.exception.IOLiteTextException;
+import com.yarachkin.litetext.filehelper.LiteTextFileHelper;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -12,40 +12,40 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-public class LitetextFileReader {
+public class LiteTextFileReader {
 
     private static final Logger LOGGER = LogManager.getRootLogger();
     private static final String FILE_MESSAGE = "File ";
 
-    private LitetextFileReader() {
+    private LiteTextFileReader() {
 
     }
 
     private static class SingletonHolder {
-        private static final LitetextFileReader INSTANCE = new LitetextFileReader();
+        private static final LiteTextFileReader INSTANCE = new LiteTextFileReader();
     }
 
-    public static LitetextFileReader getInstance() {
+    public static LiteTextFileReader getInstance() {
         return SingletonHolder.INSTANCE;
     }
 
-    public String readFromFile() throws IOLitetextException {
+    public String readFromFile() throws IOLiteTextException {
         createFileIfNotExists();
         String text = "";
-        try (FileReader reader = new FileReader(LitetextFileHelper.getInstance().acquireFilePath())) {
+        try (FileReader reader = new FileReader(LiteTextFileHelper.getInstance().acquireFilePath())) {
             int symbol;
             while ((symbol = reader.read()) != -1) {
                 text = text + (char) symbol;
             }
 
         } catch (IOException e) {
-            throw new IOLitetextException("Read error", e);
+            throw new IOLiteTextException("Read error", e);
         }
         return text;
     }
 
-    public void createFileIfNotExists() throws IOLitetextException {
-        String filePath = LitetextFileHelper.getInstance().acquireFilePath();
+    public void createFileIfNotExists() throws IOLiteTextException {
+        String filePath = LiteTextFileHelper.getInstance().acquireFilePath();
         try {
             Path cachePath = Paths.get(filePath);
 
@@ -55,7 +55,7 @@ public class LitetextFileReader {
                 LOGGER.log(Level.INFO, FILE_MESSAGE + filePath + " created.");
             }
         } catch (IOException e) {
-            throw new IOLitetextException("Unable to create " + filePath, e);
+            throw new IOLiteTextException("Unable to create " + filePath, e);
         }
     }
 }

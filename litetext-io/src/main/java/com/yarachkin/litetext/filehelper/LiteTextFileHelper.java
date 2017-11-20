@@ -1,11 +1,11 @@
 package com.yarachkin.litetext.filehelper;
 
-import com.yarachkin.litetext.exception.IOLitetextException;
+import com.yarachkin.litetext.exception.IOLiteTextException;
 
 import java.io.IOException;
 import java.util.Properties;
 
-public class LitetextFileHelper {
+public class LiteTextFileHelper {
     private static final String FILE_PROPERTIES = "/file.properties";
     private static final String FILE_DIRECTORY = "file.path";
     private static final String FILE_NAME = "file.name";
@@ -13,29 +13,29 @@ public class LitetextFileHelper {
     private String propertyPath;
     private Properties properties;
 
-    private LitetextFileHelper() {
+    private LiteTextFileHelper() {
         propertyPath = FILE_PROPERTIES;
     }
 
     private static class SingletonHolder {
-        private static final LitetextFileHelper INSTANCE = new LitetextFileHelper();
+        private static final LiteTextFileHelper INSTANCE = new LiteTextFileHelper();
     }
 
-    public static LitetextFileHelper getInstance() {
+    public static LiteTextFileHelper getInstance() {
         return SingletonHolder.INSTANCE;
     }
 
-    public void setPropertyPath(String propertyPath) throws IOLitetextException {
+    public void setPropertyPath(String propertyPath) throws IOLiteTextException {
         this.propertyPath = propertyPath;
         loadProperties();
     }
 
-    public void setDefaultPropertyPath() throws IOLitetextException {
+    public void setDefaultPropertyPath() throws IOLiteTextException {
         this.propertyPath = FILE_PROPERTIES;
         loadProperties();
     }
 
-    public String acquireFilePath() throws IOLitetextException {
+    public String acquireFilePath() throws IOLiteTextException {
         if ( properties == null ) {
             loadProperties();
         }
@@ -46,12 +46,12 @@ public class LitetextFileHelper {
         this.properties = properties;
     }
 
-    private void loadProperties() throws IOLitetextException {
+    private void loadProperties() throws IOLiteTextException {
         try {
             properties = new Properties();
-            properties.load(LitetextFileHelper.class.getResourceAsStream(propertyPath));
+            properties.load(LiteTextFileHelper.class.getResourceAsStream(propertyPath));
         } catch (IOException e) {
-            throw new IOLitetextException("Unable to open " + FILE_PROPERTIES, e);
+            throw new IOLiteTextException("Unable to open " + FILE_PROPERTIES, e);
         }
     }
 }
