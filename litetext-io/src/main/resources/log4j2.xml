@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+    <Properties>
+        <Property name="console.appender">Console</Property>
+        <Property name="file.appender">File</Property>
+        <Property name="file.filename">../log/log.log</Property>
+    </Properties>
+
+    <Appenders>
+        <Console name="${console.appender}" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{MM-dd-yy HH:mm:ss} %-5level %C{10} - %msg%n"/>
+        </Console>
+
+        <File name="${file.appender}" fileName="${file.filename}">
+            <PatternLayout pattern="%d{MM-dd-yy HH:mm:ss:SSS} [%t] %-5level %C{10} - %msg%n"/>
+        </File>
+    </Appenders>
+
+    <Loggers>
+        <Root level="DEBUG">
+            <AppenderRef ref="${console.appender}"/>
+            <AppenderRef ref="${file.appender}"/>
+        </Root>
+    </Loggers>
+</Configuration>
