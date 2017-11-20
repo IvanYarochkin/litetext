@@ -11,6 +11,7 @@
 
     <modules>
         <module>litetext-io</module>
+        <module>litetext-logic</module>
     </modules>
 
     <properties>
@@ -45,6 +46,12 @@
             <dependency>
                 <groupId>com.yarachkin.litetext</groupId>
                 <artifactId>litetext-io</artifactId>
+                <version>${tetragon.module.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.yarachkin.litetext</groupId>
+                <artifactId>litetext-logic</artifactId>
                 <version>${tetragon.module.version}</version>
             </dependency>
         </dependencies>
