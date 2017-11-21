@@ -31,27 +31,27 @@ public class LiteTextFileReader {
 
     public String readFromFile() throws IOLiteTextException {
         createFileIfNotExists();
-        String text = "";
+        StringBuffer buffer = new StringBuffer();
         try (FileReader reader = new FileReader(LiteTextFileHelper.getInstance().acquireFilePath())) {
             int symbol;
             while ((symbol = reader.read()) != -1) {
-                text = text + (char) symbol;
+                buffer.append((char) symbol);
             }
 
+            return buffer.toString();
         } catch (IOException e) {
             throw new IOLiteTextException("Read error", e);
         }
-        return text;
     }
 
     public void createFileIfNotExists() throws IOLiteTextException {
         String filePath = LiteTextFileHelper.getInstance().acquireFilePath();
         try {
-            Path cachePath = Paths.get(filePath);
+            Path liteTextPath = Paths.get(filePath);
 
-            if ( Files.notExists(cachePath) ) {
+            if ( Files.notExists(liteTextPath) ) {
                 LOGGER.log(Level.INFO, FILE_MESSAGE + filePath + " does not exist.");
-                Files.createFile(cachePath);
+                Files.createFile(liteTextPath);
                 LOGGER.log(Level.INFO, FILE_MESSAGE + filePath + " created.");
             }
         } catch (IOException e) {

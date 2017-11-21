@@ -29,10 +29,10 @@ public class LiteTextComposite implements LiteTextComponent {
 
     @Override
     public String toString() {
-        String result = "";
+        StringBuffer buffer = new StringBuffer();
         for (LiteTextComponent component : components) {
-            result = result + component;
+            buffer.append(component);
         }
-        return result;
+        return buffer.toString();
     }
 }
