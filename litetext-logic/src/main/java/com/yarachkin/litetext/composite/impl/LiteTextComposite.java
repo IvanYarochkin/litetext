@@ -15,7 +15,7 @@ public class LiteTextComposite implements LiteTextComponent {
 
     @Override
     public LiteTextComponent getChild(int index) throws CompositeLiteTextException {
-        if ( index > 0 || index < components.size() - 1 ){
+        if ( index > 0 || index < components.size() - 1 ) {
             return components.get(index);
         }
 
@@ -30,7 +30,7 @@ public class LiteTextComposite implements LiteTextComponent {
     @Override
     public String toString() {
         String result = "";
-        for (LiteTextComponent component : components){
+        for (LiteTextComponent component : components) {
             result = result + component;
         }
         return result;
