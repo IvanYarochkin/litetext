@@ -4,7 +4,7 @@ import com.yarachkin.litetext.composite.LiteTextComponent;
 import com.yarachkin.litetext.composite.exception.CompositeLiteTextException;
 import com.yarachkin.litetext.interpreter.Client;
 
-public class Expression implements LiteTextComponent{
+public class Expression implements LiteTextComponent {
     private String expression;
 
     public Expression(String expression) {
