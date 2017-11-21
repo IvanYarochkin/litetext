@@ -2,12 +2,13 @@ package com.yarachkin.litetext.composite.impl;
 
 import com.yarachkin.litetext.composite.LiteTextComponent;
 import com.yarachkin.litetext.composite.exception.CompositeLiteTextException;
+import com.yarachkin.litetext.interpreter.Client;
 
-public class Word implements LiteTextComponent {
-    private String word;
+public class Expression implements LiteTextComponent{
+    private String expression;
 
-    public Word(String word) {
-        this.word = word;
+    public Expression(String expression) {
+        this.expression = expression;
     }
 
     @Override
@@ -25,6 +26,8 @@ public class Word implements LiteTextComponent {
 
     @Override
     public String toString() {
-        return word;
+        Client client = new Client();
+        client.parse(expression);
+        return Double.toString(client.calculate());
     }
 }

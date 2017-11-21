@@ -6,6 +6,10 @@ import com.yarachkin.litetext.composite.exception.CompositeLiteTextException;
 public class PunctuationMark implements LiteTextComponent {
     private String punctuationMark;
 
+    public PunctuationMark(String punctuationMark) {
+        this.punctuationMark = punctuationMark;
+    }
+
     @Override
     public void add(LiteTextComponent component) {
     }
