@@ -1,5 +1,6 @@
 package com.yarachkin.litetext.interpreter;
 
+import com.yarachkin.litetext.interpreter.exception.InterpreterLiteTextException;
 import com.yarachkin.litetext.interpreter.impl.NonTerminalExpressionNumber;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
@@ -9,12 +10,6 @@ import java.util.ArrayDeque;
 import java.util.Arrays;
 import java.util.List;
 
-import static com.yarachkin.litetext.interpreter.MathematicalSignSet.DECREMENT;
-import static com.yarachkin.litetext.interpreter.MathematicalSignSet.DIVIDE;
-import static com.yarachkin.litetext.interpreter.MathematicalSignSet.INCREMENT;
-import static com.yarachkin.litetext.interpreter.MathematicalSignSet.MINUS;
-import static com.yarachkin.litetext.interpreter.MathematicalSignSet.MULTIPLY;
-import static com.yarachkin.litetext.interpreter.MathematicalSignSet.PLUS;
 import static com.yarachkin.litetext.interpreter.MathematicalSignSet.values;
 
 public class Client {
@@ -40,29 +35,45 @@ public class Client {
         Context context = new Context();
         nonTerminalExpressionNumbers.forEach(number -> number.interpret(context));
 
-        signs.forEach(sign -> {
-            if ( sign.equals(PLUS.toString()) ) {
-                MathExpression plus = (actualContext) -> actualContext.pushValue(actualContext.popValue() + actualContext.popValue());
-                plus.interpret(context);
-            } else if ( sign.equals(MINUS.toString()) ) {
-                MathExpression minus = (actualContext) -> actualContext.pushValue(actualContext.popValue() - actualContext.popValue());
-                minus.interpret(context);
-            } else if ( sign.equals(DIVIDE.toString()) ) {
-                MathExpression divide = (actualContext) -> actualContext.pushValue(actualContext.popValue() / actualContext.popValue());
-                divide.interpret(context);
-            } else if ( sign.equals(MULTIPLY.toString()) ) {
-                MathExpression multiply = (actualContext) -> actualContext.pushValue(actualContext.popValue() * actualContext.popValue());
-                multiply.interpret(context);
-            } else if ( sign.equals(INCREMENT.toString()) ) {
-                MathExpression increment = (actualContext) -> actualContext.pushValue(actualContext.popValue() + 1);
-                increment.interpret(context);
-            } else if ( sign.equals(DECREMENT.toString()) ) {
-                MathExpression decrement = (actualContext) -> actualContext.pushValue(actualContext.popValue() - 1);
-                decrement.interpret(context);
-            } else {
+        for (String sign : signs) {
+            try {
+                switch (MathematicalSignSet.getMathematicalSign(sign)) {
+                    case PLUS: {
+                        MathExpression plus = (actualContext) -> actualContext.pushValue(actualContext.popValue() + actualContext.popValue());
+                        plus.interpret(context);
+                        break;
+                    }
+                    case MINUS: {
+                        MathExpression minus = (actualContext) -> actualContext.pushValue(-actualContext.popValue() + actualContext.popValue());
+                        minus.interpret(context);
+                        break;
+                    }
+                    case DIVIDE: {
+                        MathExpression divide = (actualContext) -> actualContext.pushValue(1 / actualContext.popValue() * actualContext.popValue());
+                        divide.interpret(context);
+                        break;
+                    }
+                    case MULTIPLY: {
+                        MathExpression multiply = (actualContext) -> actualContext.pushValue(actualContext.popValue() * actualContext.popValue());
+                        multiply.interpret(context);
+                        break;
+                    }
+                    case INCREMENT: {
+                        MathExpression increment = (actualContext) -> actualContext.pushValue(actualContext.popValue() + 1);
+                        increment.interpret(context);
+                        break;
+                    }
+                    case DECREMENT: {
+                        MathExpression decrement = (actualContext) -> actualContext.pushValue(actualContext.popValue() - 1);
+                        decrement.interpret(context);
+                        break;
+                    }
+                }
+            } catch (InterpreterLiteTextException e) {
                 LOGGER.log(Level.INFO, "Incorrect element " + sign);
             }
-        });
+        }
+
         return context.popValue();
     }
 

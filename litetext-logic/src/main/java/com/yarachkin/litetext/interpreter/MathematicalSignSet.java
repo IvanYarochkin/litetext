@@ -1,5 +1,7 @@
 package com.yarachkin.litetext.interpreter;
 
+import com.yarachkin.litetext.interpreter.exception.InterpreterLiteTextException;
+
 public enum MathematicalSignSet {
     PLUS {
         @Override
@@ -31,5 +33,15 @@ public enum MathematicalSignSet {
         public String toString() {
             return "--";
         }
-    },
+    };
+
+    public static MathematicalSignSet getMathematicalSign(String sign) throws InterpreterLiteTextException {
+        for (MathematicalSignSet element : MathematicalSignSet.values()) {
+            if ( element.toString().equals(sign) ) {
+                return element;
+            }
+        }
+
+        throw new InterpreterLiteTextException("Incorrect sign: " + sign);
+    }
 }
