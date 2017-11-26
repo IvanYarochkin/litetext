@@ -5,6 +5,8 @@ import com.yarachkin.litetext.composite.exception.CompositeLiteTextException;
 
 public class PunctuationMark implements LiteTextComponent {
     private String punctuationMark;
+    private String firstAdditionalText = "";
+    private String lastAdditionalText = "";
 
     public PunctuationMark(String punctuationMark) {
         this.punctuationMark = punctuationMark;
@@ -24,7 +26,17 @@ public class PunctuationMark implements LiteTextComponent {
     }
 
     @Override
+    public void setFirstAdditionalText(String firstAdditionalText) {
+        this.firstAdditionalText = firstAdditionalText;
+    }
+
+    @Override
+    public void setLastAdditionalText(String lastAdditionalText) {
+        this.lastAdditionalText = lastAdditionalText;
+    }
+
+    @Override
     public String toString() {
-        return punctuationMark;
+        return firstAdditionalText + punctuationMark + lastAdditionalText;
     }
 }

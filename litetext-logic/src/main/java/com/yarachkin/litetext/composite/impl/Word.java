@@ -5,6 +5,8 @@ import com.yarachkin.litetext.composite.exception.CompositeLiteTextException;
 
 public class Word implements LiteTextComponent {
     private String word;
+    private String firstAdditionalText = "";
+    private String lastAdditionalText = "";
 
     public Word(String word) {
         this.word = word;
@@ -24,7 +26,17 @@ public class Word implements LiteTextComponent {
     }
 
     @Override
+    public void setFirstAdditionalText(String firstAdditionalText) {
+        this.firstAdditionalText = firstAdditionalText;
+    }
+
+    @Override
+    public void setLastAdditionalText(String lastAdditionalText) {
+        this.lastAdditionalText = lastAdditionalText;
+    }
+
+    @Override
     public String toString() {
-        return word;
+        return firstAdditionalText + word + lastAdditionalText;
     }
 }

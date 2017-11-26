@@ -2,7 +2,6 @@ package com.yarachkin.litetext.composite.impl;
 
 import com.yarachkin.litetext.composite.LiteTextComponent;
 import com.yarachkin.litetext.composite.exception.CompositeLiteTextException;
-import com.yarachkin.litetext.interpreter.Client;
 
 public class Expression implements LiteTextComponent {
     private String expression;
@@ -25,9 +24,15 @@ public class Expression implements LiteTextComponent {
     }
 
     @Override
+    public void setFirstAdditionalText(String firstAdditionalText) {
+    }
+
+    @Override
+    public void setLastAdditionalText(String secondAdditionalText) {
+    }
+
+    @Override
     public String toString() {
-        Client client = new Client();
-        client.parse(expression);
-        return Double.toString(client.calculate());
+        return " " + expression;
     }
 }

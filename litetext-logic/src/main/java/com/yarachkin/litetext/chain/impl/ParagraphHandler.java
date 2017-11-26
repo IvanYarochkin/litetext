@@ -8,17 +8,17 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class ParagraphHandler implements BaseHandler {
-    private static final Pattern PARAGRAPH_PATTERN = Pattern.compile("(?<=\t).*");
+    private static final Pattern SENTENCE_PATTERN = Pattern.compile("[A-ZА-Я]((т.д.|т.п.|т.е.)[^.]{3}|[^?!.])*([.]{3}|[.?!])");
 
     private SentenceHandler sentenceHandler = new SentenceHandler();
 
     @Override
     public LiteTextComponent parse(String text) {
-        LiteTextComponent paragraphs = new LiteTextComposite();
-        Matcher matcher = PARAGRAPH_PATTERN.matcher(text);
+        LiteTextComponent sentenceComponent = new LiteTextComposite();
+        Matcher matcher = SENTENCE_PATTERN.matcher(text);
         while (matcher.find()) {
-            paragraphs.add(sentenceHandler.parse(matcher.group()));
+            sentenceComponent.add(sentenceHandler.parse(matcher.group()));
         }
-        return paragraphs;
+        return sentenceComponent;
     }
 }

@@ -7,6 +7,8 @@ import java.util.ArrayList;
 
 public class LiteTextComposite implements LiteTextComponent {
     private ArrayList<LiteTextComponent> components = new ArrayList<>();
+    private String firstAdditionalText = "";
+    private String lastAdditionalText = "";
 
     @Override
     public void add(LiteTextComponent component) {
@@ -28,11 +30,21 @@ public class LiteTextComposite implements LiteTextComponent {
     }
 
     @Override
+    public void setFirstAdditionalText(String firstAdditionalText) {
+        this.firstAdditionalText = firstAdditionalText;
+    }
+
+    @Override
+    public void setLastAdditionalText(String lastAdditionalText) {
+        this.lastAdditionalText = lastAdditionalText;
+    }
+
+    @Override
     public String toString() {
-        StringBuffer buffer = new StringBuffer();
-        for (LiteTextComponent component : components) {
-            buffer.append(component);
+        StringBuffer stringBuffer = new StringBuffer();
+        for (int i = 0; i < components.size(); i++) {
+            stringBuffer.append(firstAdditionalText + components.get(i).toString() + lastAdditionalText);
         }
-        return buffer.toString();
+        return stringBuffer.toString();
     }
 }

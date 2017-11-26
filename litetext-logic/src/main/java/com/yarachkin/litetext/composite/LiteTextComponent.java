@@ -8,4 +8,8 @@ public interface LiteTextComponent {
     LiteTextComponent getChild(int index) throws CompositeLiteTextException;
 
     void remove(LiteTextComponent component);
+
+    void setFirstAdditionalText(String firstAdditionalText);
+
+    void setLastAdditionalText(String secondAdditionalText);
 }
