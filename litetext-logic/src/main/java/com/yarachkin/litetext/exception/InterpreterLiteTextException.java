@@ -1,4 +1,4 @@
-package com.yarachkin.litetext.interpreter.exception;
+package com.yarachkin.litetext.exception;
 
 public class InterpreterLiteTextException extends Exception {
     public InterpreterLiteTextException() {

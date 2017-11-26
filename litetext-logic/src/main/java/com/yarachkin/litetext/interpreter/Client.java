@@ -1,6 +1,6 @@
 package com.yarachkin.litetext.interpreter;
 
-import com.yarachkin.litetext.interpreter.exception.InterpreterLiteTextException;
+import com.yarachkin.litetext.exception.InterpreterLiteTextException;
 import com.yarachkin.litetext.interpreter.impl.NonTerminalExpressionNumber;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;

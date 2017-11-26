@@ -1,7 +1,7 @@
 package com.yarachkin.litetext.composite.impl;
 
 import com.yarachkin.litetext.composite.LiteTextComponent;
-import com.yarachkin.litetext.composite.exception.CompositeLiteTextException;
+import com.yarachkin.litetext.exception.CompositeLiteTextException;
 
 import java.util.ArrayList;
 

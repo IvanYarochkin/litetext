@@ -1,9 +1,9 @@
 package com.yarachkin.litetext.chain.impl;
 
 import com.yarachkin.litetext.chain.BaseHandler;
-import com.yarachkin.litetext.chain.exception.ChainLiteTextException;
 import com.yarachkin.litetext.composite.LiteTextComponent;
 import com.yarachkin.litetext.composite.impl.LiteTextComposite;
+import com.yarachkin.litetext.exception.ChainLiteTextException;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

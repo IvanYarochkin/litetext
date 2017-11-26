@@ -1,4 +1,4 @@
-package com.yarachkin.litetext.composite.exception;
+package com.yarachkin.litetext.exception;
 
 public class CompositeLiteTextException extends Exception {
     public CompositeLiteTextException() {

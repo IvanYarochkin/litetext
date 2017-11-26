@@ -1,6 +1,6 @@
 package com.yarachkin.litetext.composite;
 
-import com.yarachkin.litetext.composite.exception.CompositeLiteTextException;
+import com.yarachkin.litetext.exception.CompositeLiteTextException;
 
 public interface LiteTextComponent {
     void add(LiteTextComponent component);

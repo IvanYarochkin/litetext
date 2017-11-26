@@ -1,4 +1,4 @@
-package com.yarachkin.litetext.chain.exception;
+package com.yarachkin.litetext.exception;
 
 public class ChainLiteTextException extends Exception {
     public ChainLiteTextException() {

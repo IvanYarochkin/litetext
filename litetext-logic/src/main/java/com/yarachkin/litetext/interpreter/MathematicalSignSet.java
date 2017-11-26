@@ -1,6 +1,6 @@
 package com.yarachkin.litetext.interpreter;
 
-import com.yarachkin.litetext.interpreter.exception.InterpreterLiteTextException;
+import com.yarachkin.litetext.exception.InterpreterLiteTextException;
 
 public enum MathematicalSignSet {
     PLUS {
