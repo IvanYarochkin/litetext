@@ -7,6 +7,8 @@ import com.yarachkin.litetext.interpreter.Client;
 
 public class Expression implements LiteTextComponent {
     private String expression;
+    private String firstAdditionalText = "";
+    private String lastAdditionalText = "";
 
     public Expression(String expression) {
         this.expression = expression;
@@ -34,14 +36,16 @@ public class Expression implements LiteTextComponent {
 
     @Override
     public void setFirstAdditionalText(String firstAdditionalText) {
+        this.firstAdditionalText = firstAdditionalText;
     }
 
     @Override
-    public void setLastAdditionalText(String secondAdditionalText) {
+    public void setLastAdditionalText(String lastAdditionalText) {
+        this.lastAdditionalText = lastAdditionalText;
     }
 
     @Override
     public String toString() {
-        return Double.toString(calculateExpression());
+        return firstAdditionalText + calculateExpression() + lastAdditionalText;
     }
 }

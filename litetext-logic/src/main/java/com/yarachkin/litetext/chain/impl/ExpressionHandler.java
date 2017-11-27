@@ -9,6 +9,7 @@ public class ExpressionHandler implements BaseHandler {
     @Override
     public LiteTextComponent parse(String text) {
         LiteTextComponent expression = new Expression(text);
+        expression.setFirstAdditionalText(" ");
         return expression;
     }
 }
