@@ -1,13 +1,22 @@
 package com.yarachkin.litetext.composite.impl;
 
 import com.yarachkin.litetext.composite.LiteTextComponent;
+import com.yarachkin.litetext.converter.ReversePolishConverter;
 import com.yarachkin.litetext.exception.CompositeLiteTextException;
+import com.yarachkin.litetext.interpreter.Client;
 
 public class Expression implements LiteTextComponent {
     private String expression;
 
     public Expression(String expression) {
         this.expression = expression;
+    }
+
+    private double calculateExpression() {
+        Client client = new Client();
+        ReversePolishConverter converter = new ReversePolishConverter();
+        client.parse(converter.convertToReversePolish(expression));
+        return client.calculate();
     }
 
     @Override
@@ -33,6 +42,6 @@ public class Expression implements LiteTextComponent {
 
     @Override
     public String toString() {
-        return " " + expression;
+        return Double.toString(calculateExpression());
     }
 }

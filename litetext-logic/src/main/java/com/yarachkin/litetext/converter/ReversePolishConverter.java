@@ -5,10 +5,19 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class ReversePolishConverter {
-    private static final Pattern NUMBER_AND_OPERATOR_PATTERN = Pattern.compile("((?<=(\\+|-|\\*|/|\\())(-?\\d+(\\.\\d+)?))|\\d+|(\\+{2}|-{2}|\\+|-|/|\\*|\\(|\\))");
+    private static final Pattern NUMBER_AND_OPERATOR_PATTERN = Pattern.compile("(i|j|-i|-j)|((?<=(\\+|-|\\*|/|\\())(-?\\d+(\\.\\d+)?))|\\d+|(\\+{2}|-{2}|\\+|-|/|\\*|\\(|\\))");
     private static final Pattern NUMBER_PATTERN = Pattern.compile("(-?\\d+(\\.\\d+)?)");
     private static final Pattern OPERATOR_PATTERN = Pattern.compile("(\\+{2}|-{2}|\\+|-|/|\\*|\\(|\\))");
+
+    private static double i;
+    private static double j;
+
     private ArrayDeque<String> operatorsAndValues = new ArrayDeque<>();
+
+    public static void initializeDefaultValues(double iValue, double jValue) {
+        i = iValue;
+        j = jValue;
+    }
 
     public String convertToReversePolish(String expression) {
         if ( expression == null ) {
@@ -22,7 +31,12 @@ public class ReversePolishConverter {
         ArrayDeque<String> values = new ArrayDeque<>();
         operator.push("#");
         operatorsAndValues.forEach(element -> {
-            if ( isNumber(element) ) {
+            if ( element.equals("i") || element.equals("-i")) {
+                values.push(Double.toString(element.equals("i") ? i : -i));
+            } else if ( element.equals("j") || element.equals("-j")) {
+                values.push(Double.toString(element.equals("j") ? j : -j));
+
+            } else if ( isNumber(element) ) {
                 values.push(element);
             } else if ( isOperator(element) ) {
                 switch (element) {
