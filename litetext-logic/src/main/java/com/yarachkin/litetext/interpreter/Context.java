@@ -10,6 +10,6 @@ public class Context {
     }
 
     public void pushValue(Double value) {
-        values.addLast(value);
+        values.push(value);
     }
 }
