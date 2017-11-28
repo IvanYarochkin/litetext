@@ -44,16 +44,6 @@ public class Client {
                                 expressions.addLast(multiply);
                                 break;
                             }
-                            case INCREMENT: {
-                                MathExpression increment = (actualContext) -> actualContext.pushValue(actualContext.popValue() + 1);
-                                expressions.addLast(increment);
-                                break;
-                            }
-                            case DECREMENT: {
-                                MathExpression decrement = (actualContext) -> actualContext.pushValue(actualContext.popValue() - 1);
-                                expressions.addLast(decrement);
-                                break;
-                            }
                         }
                     } catch (InterpreterLiteTextException e) {
                         LOGGER.log(Level.INFO, "Incorrect element " + lexeme);

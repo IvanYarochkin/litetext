@@ -23,16 +23,6 @@ public enum MathematicalSignSet {
         public String toString() {
             return "/";
         }
-    }, INCREMENT {
-        @Override
-        public String toString() {
-            return "++";
-        }
-    }, DECREMENT {
-        @Override
-        public String toString() {
-            return "--";
-        }
     };
 
     public static MathematicalSignSet getMathematicalSign(String sign) throws InterpreterLiteTextException {
