@@ -10,6 +10,10 @@ public class LiteTextComposite implements LiteTextComponent {
     private String firstAdditionalText = "";
     private String lastAdditionalText = "";
 
+    public ArrayList<LiteTextComponent> getComponents() {
+        return components;
+    }
+
     @Override
     public void add(LiteTextComponent component) {
         components.add(component);
