@@ -12,6 +12,7 @@ public class LiteTextFileHelper {
 
     private String propertyPath;
     private Properties properties;
+    private String filePath = "";
 
     private LiteTextFileHelper() {
         propertyPath = FILE_PROPERTIES;
@@ -27,19 +28,29 @@ public class LiteTextFileHelper {
 
     public void setPropertyPath(String propertyPath) throws IOLiteTextException {
         this.propertyPath = propertyPath;
+        filePath = "";
         loadProperties();
     }
 
     public void setDefaultPropertyPath() throws IOLiteTextException {
         this.propertyPath = FILE_PROPERTIES;
+        filePath = "";
         loadProperties();
     }
 
     public String acquireFilePath() throws IOLiteTextException {
+        if ( !filePath.isEmpty() ) {
+            return filePath;
+        }
+
         if ( properties == null ) {
             loadProperties();
         }
         return properties.getProperty(FILE_DIRECTORY) + properties.getProperty(FILE_NAME);
+    }
+
+    public void setFilePath(String filePath) {
+        this.filePath = filePath;
     }
 
     public void loadProperties(Properties properties) {
