@@ -18,6 +18,7 @@ public class SentenceHandler implements BaseHandler {
     @Override
     public LiteTextComponent parse(String text) {
         LiteTextComponent lexemeAndExpressionComponent = new LiteTextComposite();
+        lexemeAndExpressionComponent.setFirstAdditionalText(" ");
         Matcher matcher = LEXEME_AND_EXPRESSION_PATTERN.matcher(text);
         while (matcher.find()) {
             Matcher expressionMatcher = EXPRESSION_PATTERN.matcher(matcher.group());

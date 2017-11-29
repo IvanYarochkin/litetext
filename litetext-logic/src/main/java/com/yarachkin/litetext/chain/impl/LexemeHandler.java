@@ -8,7 +8,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class LexemeHandler implements BaseHandler {
-    private static final Pattern WORD_AND_PUNCTUATION_MARK_PATTERN = Pattern.compile("((\\w)+)|(\\.{3}|\\?!|!\\?|-|[.,!:;?])");
+    private static final Pattern WORD_AND_PUNCTUATION_MARK_PATTERN = Pattern.compile("((\\w)|\\()|(\\w|\\.{3}|\\?!|!\\?|-|\\s-|[.,!:;?()])");
     private static final Pattern WORD_PATTERN = Pattern.compile("\\w+");
 
     private WordHandler wordHandler = new WordHandler();
