@@ -16,7 +16,7 @@
 
     <properties>
         <log4j.version>2.9.1</log4j.version>
-        <tetragon.module.version>1.0-SNAPSHOT</tetragon.module.version>
+        <litetext.module.version>1.0-SNAPSHOT</litetext.module.version>
         <maven-resources-plugin.version>3.0.2</maven-resources-plugin.version>
         <directory-maven-plugin.version>0.2</directory-maven-plugin.version>
         <testng.version>6.11</testng.version>
@@ -46,13 +46,13 @@
             <dependency>
                 <groupId>com.yarachkin.litetext</groupId>
                 <artifactId>litetext-io</artifactId>
-                <version>${tetragon.module.version}</version>
+                <version>${litetext.module.version}</version>
             </dependency>
 
             <dependency>
                 <groupId>com.yarachkin.litetext</groupId>
                 <artifactId>litetext-logic</artifactId>
-                <version>${tetragon.module.version}</version>
+                <version>${litetext.module.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

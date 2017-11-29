@@ -21,7 +21,7 @@ public class LiteTextFileReaderTest {
 
     @BeforeMethod
     public void setUp() throws Exception {
-        testFile = File.createTempFile("lite_tetragon_reader", "txt");
+        testFile = File.createTempFile("lite_text_reader", "txt");
         filePath = testFile.getAbsolutePath();
 
         testText = "It has survived - not only (five) centuries, but also the leap into 13+i-- electronic " +

@@ -22,7 +22,8 @@ public class Word implements LiteTextComponent {
     }
 
     @Override
-    public void remove(LiteTextComponent component) {
+    public void remove(LiteTextComponent component) throws CompositeLiteTextException {
+        throw new CompositeLiteTextException("Can't remove a Leaf " + this.getClass().getName());
     }
 
     @Override

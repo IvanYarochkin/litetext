@@ -7,7 +7,7 @@ public interface LiteTextComponent {
 
     LiteTextComponent getChild(int index) throws CompositeLiteTextException;
 
-    void remove(LiteTextComponent component);
+    void remove(LiteTextComponent component) throws CompositeLiteTextException;
 
     void setFirstAdditionalText(String firstAdditionalText);
 
