@@ -54,6 +54,7 @@ public class LiteTextFileHelper {
     }
 
     public void loadProperties(Properties properties) {
+        filePath = "";
         this.properties = properties;
     }
 

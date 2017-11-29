@@ -17,12 +17,12 @@ import static org.testng.AssertJUnit.assertFalse;
 public class LiteTextFileReaderTest {
     private String filePath;
     private String testText;
+    private File testFile;
 
     @BeforeMethod
     public void setUp() throws Exception {
-        File file = File.createTempFile("lite_tetragon_reader", "txt");
-        filePath = file.getAbsolutePath();
-        file.deleteOnExit();
+        testFile = File.createTempFile("lite_tetragon_reader", "txt");
+        filePath = testFile.getAbsolutePath();
 
         testText = "It has survived - not only (five) centuries, but also the leap into 13+i-- electronic " +
                 "typesetting, remaining 3+5 essentially 6+9*(3-4) unchanged. It was popularised in the " +
@@ -38,6 +38,13 @@ public class LiteTextFileReaderTest {
 
     }
 
+    @AfterMethod
+    public void tearDown() throws Exception {
+        Files.deleteIfExists(Paths.get("src/test/resources/testFile.txt"));
+        LiteTextFileHelper.getInstance().setDefaultPropertyPath();
+        testFile.delete();
+    }
+
     @Test
     public void readFromFileTest() throws Exception {
         assertEquals(LiteTextFileReader.getInstance().readFromFile(), testText);
@@ -48,11 +55,6 @@ public class LiteTextFileReaderTest {
         LiteTextFileHelper.getInstance().setFilePath("src/test/resources/testFile.txt");
         LiteTextFileReader.getInstance().createFileIfNotExists();
         assertFalse(Files.notExists(Paths.get("src/test/resources/testFile.txt")));
-    }
-
-    @AfterMethod
-    public void tearDown() throws Exception {
-        Files.deleteIfExists(Paths.get("src/test/resources/testFile.txt"));
     }
 
 }
