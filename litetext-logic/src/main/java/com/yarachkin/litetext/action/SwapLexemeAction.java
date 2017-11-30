@@ -26,25 +26,29 @@ public class SwapLexemeAction {
     private static void handleSentences(LiteTextComponent paragraph) throws CompositeLiteTextException {
         for (LiteTextComponent sentence : paragraph.getComponents()) {
             if ( sentence instanceof LiteTextComposite ) {
-                LiteTextComposite firstLexeme = new LiteTextComposite();
-                LiteTextComposite lastLexeme = new LiteTextComposite();
-                int firstElementIndex = 0;
-                int lastElementIndex = 0;
-
-                for (int i = 0; i < sentence.getComponents().size(); i++) {
-                    if ( sentence.getComponents().get(i) instanceof LiteTextComposite
-                            && firstLexeme.getComponents().isEmpty() ) {
-                        firstLexeme = (LiteTextComposite) sentence.getChild(i);
-                        firstElementIndex = i;
-                    }
-                    if ( sentence.getComponents().get(i) instanceof LiteTextComposite ) {
-                        lastLexeme = (LiteTextComposite) sentence.getChild(i);
-                        lastElementIndex = i;
-                    }
-                }
-                sentence.getComponents().set(firstElementIndex, lastLexeme);
-                sentence.getComponents().set(lastElementIndex, firstLexeme);
+                handleLexemes(sentence);
             }
         }
+    }
+
+    private static void handleLexemes(LiteTextComponent sentence) throws CompositeLiteTextException {
+        LiteTextComposite firstLexeme = new LiteTextComposite();
+        LiteTextComposite lastLexeme = new LiteTextComposite();
+        int firstElementIndex = 0;
+        int lastElementIndex = 0;
+
+        for (int i = 0; i < sentence.getComponents().size(); i++) {
+            if ( sentence.getComponents().get(i) instanceof LiteTextComposite
+                    && firstLexeme.getComponents().isEmpty() ) {
+                firstLexeme = (LiteTextComposite) sentence.getChild(i);
+                firstElementIndex = i;
+            }
+            if ( sentence.getComponents().get(i) instanceof LiteTextComposite ) {
+                lastLexeme = (LiteTextComposite) sentence.getChild(i);
+                lastElementIndex = i;
+            }
+        }
+        sentence.getComponents().set(firstElementIndex, lastLexeme);
+        sentence.getComponents().set(lastElementIndex, firstLexeme);
     }
 }
