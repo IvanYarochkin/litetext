@@ -12,7 +12,7 @@ public class SortingSentenceAction {
     private static TreeMap<Integer, LiteTextComponent> sortedSentences;
 
     public static TreeMap<Integer, LiteTextComponent> printSentencesInAscendingOrder(String text) throws ActionLiteTextException {
-        try{
+        try {
             sortedSentences = new TreeMap<>();
             TextHandler textHandler = new TextHandler();
             LiteTextComponent textComponent = textHandler.parse(text);
