@@ -42,12 +42,12 @@ public class ReversePolishConverter {
 
         while (!reversePolish.isEmpty()) {
             result.append(reversePolish.pollLast());
-            result.append(" ");
+            result.append(' ');
         }
 
         while (!operator.peek().equals("#")) {
             result.append(operator.pop());
-            result.append(" ");
+            result.append(' ');
         }
 
         return result.toString();
