@@ -42,7 +42,7 @@ public class LiteTextComposite implements LiteTextComponent {
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
         for (int i = 0; i < components.size(); i++) {
-            stringBuilder.append(firstAdditionalText + components.get(i).toString() + lastAdditionalText);
+            stringBuilder.append(firstAdditionalText + components.get(i) + lastAdditionalText);
         }
         return stringBuilder.toString();
     }
