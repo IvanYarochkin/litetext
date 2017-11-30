@@ -3,6 +3,8 @@ package com.yarachkin.litetext.composite.impl;
 import com.yarachkin.litetext.composite.LiteTextComponent;
 import com.yarachkin.litetext.exception.CompositeLiteTextException;
 
+import java.util.ArrayList;
+
 public class Word implements LiteTextComponent {
     private String word;
     private String firstAdditionalText = "";
@@ -10,6 +12,10 @@ public class Word implements LiteTextComponent {
 
     public Word(String word) {
         this.word = word;
+    }
+
+    public String getWord() {
+        return word;
     }
 
     @Override
@@ -34,6 +40,11 @@ public class Word implements LiteTextComponent {
     @Override
     public void setLastAdditionalText(String lastAdditionalText) {
         this.lastAdditionalText = lastAdditionalText;
+    }
+
+    @Override
+    public ArrayList<LiteTextComponent> getComponents() throws CompositeLiteTextException {
+        throw new CompositeLiteTextException("Can't use method getComponent in Leaf " + this.getClass().getName());
     }
 
     @Override

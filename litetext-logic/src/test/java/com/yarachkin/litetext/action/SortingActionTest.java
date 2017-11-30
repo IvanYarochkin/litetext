@@ -1,6 +1,5 @@
 package com.yarachkin.litetext.action;
 
-import com.yarachkin.litetext.chain.impl.TextHandler;
 import com.yarachkin.litetext.composite.LiteTextComponent;
 import com.yarachkin.litetext.filehelper.LiteTextFileHelper;
 import com.yarachkin.litetext.reader.LiteTextFileReader;
@@ -21,7 +20,6 @@ public class SortingActionTest {
     private File testFile;
     private String testText;
     private ArrayList<Integer> expectedLexemes;
-    private TextHandler textHandler;
 
     @BeforeMethod
     public void setUp() throws Exception {
@@ -41,7 +39,6 @@ public class SortingActionTest {
         LiteTextFileHelper.getInstance().setFilePath(filePath);
 
         expectedLexemes = new ArrayList<>();
-        textHandler = new TextHandler();
     }
 
     @AfterMethod
@@ -52,8 +49,7 @@ public class SortingActionTest {
 
     @Test
     public void testPrintSentencesInAscendingOrder() throws Exception {
-        LiteTextComponent component = textHandler.parse(LiteTextFileReader.getInstance().readFromFile());
-        TreeMap<Integer, LiteTextComponent> sentences = SortingAction.printSentencesInAscendingOrder(component);
+        TreeMap<Integer, LiteTextComponent> sentences = SortingAction.printSentencesInAscendingOrder(LiteTextFileReader.getInstance().readFromFile());
         ArrayList<Integer> actualLexemes = new ArrayList<>();
         sentences.entrySet().forEach(element -> actualLexemes.add(element.getKey()));
         expectedLexemes.add(17);

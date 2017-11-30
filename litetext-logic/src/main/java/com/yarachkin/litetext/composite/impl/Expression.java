@@ -5,6 +5,8 @@ import com.yarachkin.litetext.converter.ReversePolishConverter;
 import com.yarachkin.litetext.exception.CompositeLiteTextException;
 import com.yarachkin.litetext.interpreter.Client;
 
+import java.util.ArrayList;
+
 public class Expression implements LiteTextComponent {
     private double expression;
     private String firstAdditionalText = "";
@@ -19,6 +21,14 @@ public class Expression implements LiteTextComponent {
         ReversePolishConverter converter = new ReversePolishConverter();
         client.parse(converter.convertToReversePolish(expression));
         return client.calculate();
+    }
+
+    public double getExpression() {
+        return expression;
+    }
+
+    public void setExpression(double expression) {
+        this.expression = expression;
     }
 
     @Override
@@ -43,6 +53,11 @@ public class Expression implements LiteTextComponent {
     @Override
     public void setLastAdditionalText(String lastAdditionalText) {
         this.lastAdditionalText = lastAdditionalText;
+    }
+
+    @Override
+    public ArrayList<LiteTextComponent> getComponents() throws CompositeLiteTextException {
+        throw new CompositeLiteTextException("Can't use method getComponent in Leaf " + this.getClass().getName());
     }
 
     @Override

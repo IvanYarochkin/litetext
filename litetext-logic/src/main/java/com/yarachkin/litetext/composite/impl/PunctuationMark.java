@@ -3,6 +3,8 @@ package com.yarachkin.litetext.composite.impl;
 import com.yarachkin.litetext.composite.LiteTextComponent;
 import com.yarachkin.litetext.exception.CompositeLiteTextException;
 
+import java.util.ArrayList;
+
 public class PunctuationMark implements LiteTextComponent {
     private String punctuationMark;
     private String firstAdditionalText = "";
@@ -10,6 +12,10 @@ public class PunctuationMark implements LiteTextComponent {
 
     public PunctuationMark(String punctuationMark) {
         this.punctuationMark = punctuationMark;
+    }
+
+    public String getPunctuationMark() {
+        return punctuationMark;
     }
 
     @Override
@@ -34,6 +40,11 @@ public class PunctuationMark implements LiteTextComponent {
     @Override
     public void setLastAdditionalText(String lastAdditionalText) {
         this.lastAdditionalText = lastAdditionalText;
+    }
+
+    @Override
+    public ArrayList<LiteTextComponent> getComponents() throws CompositeLiteTextException {
+        throw new CompositeLiteTextException("Can't use method getComponent in Leaf " + this.getClass().getName());
     }
 
     @Override
