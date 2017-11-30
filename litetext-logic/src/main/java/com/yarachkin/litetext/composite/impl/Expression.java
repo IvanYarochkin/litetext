@@ -1,9 +1,8 @@
 package com.yarachkin.litetext.composite.impl;
 
+import com.yarachkin.litetext.action.CalculateExpressionAction;
 import com.yarachkin.litetext.composite.LiteTextComponent;
-import com.yarachkin.litetext.converter.ReversePolishConverter;
 import com.yarachkin.litetext.exception.CompositeLiteTextException;
-import com.yarachkin.litetext.interpreter.Client;
 
 import java.util.ArrayList;
 
@@ -13,14 +12,7 @@ public class Expression implements LiteTextComponent {
     private String lastAdditionalText = "";
 
     public Expression(String expression) {
-        this.expression = calculateExpression(expression);
-    }
-
-    private double calculateExpression(String expression) {
-        Client client = new Client();
-        ReversePolishConverter converter = new ReversePolishConverter();
-        client.parse(converter.convertToReversePolish(expression));
-        return client.calculate();
+        this.expression = CalculateExpressionAction.calculate(expression);
     }
 
     public double getExpression() {
@@ -64,4 +56,5 @@ public class Expression implements LiteTextComponent {
     public String toString() {
         return firstAdditionalText + expression + lastAdditionalText;
     }
+
 }
