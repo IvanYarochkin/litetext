@@ -7,7 +7,7 @@ import java.util.ArrayList;
 public interface LiteTextComponent {
     void add(LiteTextComponent component);
 
-    LiteTextComponent getChild(int index) throws CompositeLiteTextException, CloneNotSupportedException;
+    LiteTextComponent getChild(int index) throws CompositeLiteTextException;
 
     void remove(LiteTextComponent component) throws CompositeLiteTextException;
 

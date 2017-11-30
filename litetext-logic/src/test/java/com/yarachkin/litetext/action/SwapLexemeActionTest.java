@@ -15,7 +15,7 @@ import java.io.FileWriter;
 
 import static org.testng.Assert.assertEquals;
 
-public class ReshuffleLexemeActionTest {
+public class SwapLexemeActionTest {
     private String filePath;
     private File testFile;
     private String testText;
@@ -56,7 +56,6 @@ public class ReshuffleLexemeActionTest {
 
     @Test
     public void testReshuffleLexeme() throws Exception {
-        LiteTextComponent component = textHandler.parse(LiteTextFileReader.getInstance().readFromFile());
-        assertEquals(ReshuffleLexemeAction.reshuffleLexeme(component).toString(), result);
+        assertEquals(SwapLexemeAction.swapLexeme(LiteTextFileReader.getInstance().readFromFile()).toString(), result);
     }
 }
