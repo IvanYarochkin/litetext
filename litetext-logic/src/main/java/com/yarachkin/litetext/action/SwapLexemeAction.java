@@ -25,19 +25,19 @@ public class SwapLexemeAction {
 
     private static void handleSentences(LiteTextComponent paragraph) throws CompositeLiteTextException {
         for (LiteTextComponent sentence : paragraph.getComponents()) {
-            if ( sentence.getClass().getSimpleName().equals("LiteTextComposite") ) {
+            if ( sentence instanceof LiteTextComposite ) {
                 LiteTextComposite firstLexeme = new LiteTextComposite();
                 LiteTextComposite lastLexeme = new LiteTextComposite();
                 int firstElementIndex = 0;
                 int lastElementIndex = 0;
 
                 for (int i = 0; i < sentence.getComponents().size(); i++) {
-                    if ( sentence.getComponents().get(i).getClass().getSimpleName().equals("LiteTextComposite")
+                    if ( sentence.getComponents().get(i) instanceof LiteTextComposite
                             && firstLexeme.getComponents().isEmpty() ) {
                         firstLexeme = (LiteTextComposite) sentence.getChild(i);
                         firstElementIndex = i;
                     }
-                    if ( sentence.getComponents().get(i).getClass().getSimpleName().equals("LiteTextComposite") ) {
+                    if ( sentence.getComponents().get(i) instanceof LiteTextComposite ) {
                         lastLexeme = (LiteTextComposite) sentence.getChild(i);
                         lastElementIndex = i;
                     }

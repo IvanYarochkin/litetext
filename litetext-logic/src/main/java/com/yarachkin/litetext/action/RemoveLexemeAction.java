@@ -2,6 +2,7 @@ package com.yarachkin.litetext.action;
 
 import com.yarachkin.litetext.chain.impl.TextHandler;
 import com.yarachkin.litetext.composite.LiteTextComponent;
+import com.yarachkin.litetext.composite.impl.LiteTextComposite;
 import com.yarachkin.litetext.composite.impl.PunctuationMark;
 import com.yarachkin.litetext.composite.impl.Word;
 import com.yarachkin.litetext.exception.ActionLiteTextException;
@@ -35,7 +36,7 @@ public class RemoveLexemeAction {
         ArrayList<LiteTextComponent> waitingRemovingElements = new ArrayList<>();
 
         for (LiteTextComponent lexeme : sentence.getComponents()) {
-            if ( lexeme.getClass().getSimpleName().equals("LiteTextComposite") && calculateLexemeSize(lexeme) == size
+            if ( lexeme instanceof LiteTextComposite && calculateLexemeSize(lexeme) == size
                     && firstSymbol == calculateFirstSymbol(lexeme) ) {
                 waitingRemovingElements.add(lexeme);
             }
@@ -52,7 +53,7 @@ public class RemoveLexemeAction {
             if ( element.getClass().getSimpleName().equals("Word") ) {
                 Word word = (Word) element;
                 lexemeSize += word.getWord().length();
-            } else if ( element.getClass().getSimpleName().equals("PunctuationMark") ) {
+            } else if ( element instanceof PunctuationMark ) {
                 PunctuationMark punctuationMark = (PunctuationMark) element;
                 lexemeSize += punctuationMark.getPunctuationMark().length();
             }
@@ -69,7 +70,7 @@ public class RemoveLexemeAction {
 
                 firstSymbol = Character.toString(word.getWord().charAt(0));
 
-            } else if ( firstSymbol.isEmpty() && element.getClass().getSimpleName().equals("PunctuationMark") ) {
+            } else if ( firstSymbol.isEmpty() && element instanceof PunctuationMark ) {
                 PunctuationMark punctuationMark = (PunctuationMark) element;
                 firstSymbol = Character.toString(punctuationMark.getPunctuationMark().charAt(0));
             }

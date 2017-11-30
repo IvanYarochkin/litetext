@@ -2,6 +2,7 @@ package com.yarachkin.litetext.action;
 
 import com.yarachkin.litetext.chain.impl.TextHandler;
 import com.yarachkin.litetext.composite.LiteTextComponent;
+import com.yarachkin.litetext.composite.impl.LiteTextComposite;
 import com.yarachkin.litetext.exception.ActionLiteTextException;
 import com.yarachkin.litetext.exception.ChainLiteTextException;
 import com.yarachkin.litetext.exception.CompositeLiteTextException;
@@ -31,7 +32,7 @@ public class SortingSentenceAction {
             int lexemeCounts = 0;
 
             for (LiteTextComponent sentenceElement : sentence.getComponents()) {
-                if ( sentenceElement.getClass().getSimpleName().equals("LiteTextComposite") ) {
+                if ( sentenceElement instanceof LiteTextComposite ) {
                     lexemeCounts++;
                 }
             }
