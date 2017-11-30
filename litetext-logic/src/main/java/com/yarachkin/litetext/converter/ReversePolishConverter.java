@@ -28,7 +28,7 @@ public class ReversePolishConverter {
 
         fillOperatorsAndValues(expression);
 
-        StringBuffer result = new StringBuffer();
+        StringBuilder result = new StringBuilder();
         operator.push("#");
         operatorsAndValues.forEach(element -> {
             if ( element.contains("i") || element.contains("j") ) {
@@ -41,11 +41,13 @@ public class ReversePolishConverter {
         });
 
         while (!reversePolish.isEmpty()) {
-            result.append(reversePolish.pollLast() + " ");
+            result.append(reversePolish.pollLast());
+            result.append(" ");
         }
 
         while (!operator.peek().equals("#")) {
-            result.append(operator.pop() + " ");
+            result.append(operator.pop());
+            result.append(" ");
         }
 
         return result.toString();

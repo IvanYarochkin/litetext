@@ -31,7 +31,7 @@ public class LiteTextFileReader {
 
     public String readFromFile() throws IOLiteTextException {
         createFileIfNotExists();
-        StringBuffer buffer = new StringBuffer();
+        StringBuilder buffer = new StringBuilder();
         try (FileReader reader = new FileReader(LiteTextFileHelper.getInstance().acquireFilePath())) {
             int symbol;
             while ((symbol = reader.read()) != -1) {
