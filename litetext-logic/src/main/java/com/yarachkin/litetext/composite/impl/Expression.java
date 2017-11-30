@@ -6,15 +6,15 @@ import com.yarachkin.litetext.exception.CompositeLiteTextException;
 import com.yarachkin.litetext.interpreter.Client;
 
 public class Expression implements LiteTextComponent {
-    private String expression;
+    private double expression;
     private String firstAdditionalText = "";
     private String lastAdditionalText = "";
 
     public Expression(String expression) {
-        this.expression = expression;
+        this.expression = calculateExpression(expression);
     }
 
-    private double calculateExpression() {
+    private double calculateExpression(String expression) {
         Client client = new Client();
         ReversePolishConverter converter = new ReversePolishConverter();
         client.parse(converter.convertToReversePolish(expression));
@@ -47,6 +47,6 @@ public class Expression implements LiteTextComponent {
 
     @Override
     public String toString() {
-        return firstAdditionalText + calculateExpression() + lastAdditionalText;
+        return firstAdditionalText + expression + lastAdditionalText;
     }
 }

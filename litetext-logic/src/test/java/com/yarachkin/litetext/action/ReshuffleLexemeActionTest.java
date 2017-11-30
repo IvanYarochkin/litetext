@@ -11,21 +11,19 @@ import org.testng.annotations.Test;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
-import java.util.ArrayList;
-import java.util.TreeMap;
 
 import static org.testng.Assert.assertEquals;
 
-public class SortingActionTest {
+public class ReshuffleLexemeActionTest {
     private String filePath;
     private File testFile;
     private String testText;
-    private ArrayList<Integer> expectedLexemes;
     private TextHandler textHandler;
+    private String result;
 
     @BeforeMethod
     public void setUp() throws Exception {
-        testFile = File.createTempFile("litetext_sorting_action_test", "txt");
+        testFile = File.createTempFile("litetext_reshuffle_action_test", "txt");
         filePath = testFile.getAbsolutePath();
 
         testText = "\tIt has survived - not only (five) centuries, but also the leap into 13+i-- electronic typesetting," +
@@ -38,9 +36,13 @@ public class SortingActionTest {
             bufferedWriter.write(testText);
 
         }
+
         LiteTextFileHelper.getInstance().setFilePath(filePath);
 
-        expectedLexemes = new ArrayList<>();
+        result = "\t unchanged. has survived - not only (five) centuries, but also the leap into 12.0 electronic typesetting," +
+                " remaining 8.0 essentially -3.0 It Ipsum. was popularised in the 1085.0" +
+                " with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing" +
+                " software like Aldus PageMaker including versions of Lorem It\n\n";
         textHandler = new TextHandler();
     }
 
@@ -51,13 +53,8 @@ public class SortingActionTest {
     }
 
     @Test
-    public void testPrintSentencesInAscendingOrder() throws Exception {
+    public void testReshuffleLexeme() throws Exception {
         LiteTextComponent component = textHandler.parse(LiteTextFileReader.getInstance().readFromFile());
-        TreeMap<Integer, LiteTextComponent> sentences = SortingAction.printSentencesInAscendingOrder(component);
-        ArrayList<Integer> actualLexemes = new ArrayList<>();
-        sentences.entrySet().forEach(element -> actualLexemes.add(element.getKey()));
-        expectedLexemes.add(17);
-        expectedLexemes.add(30);
-        assertEquals(actualLexemes, expectedLexemes);
+        assertEquals(ReshuffleLexemeAction.reshuffleLexeme(component).toString(), result);
     }
 }

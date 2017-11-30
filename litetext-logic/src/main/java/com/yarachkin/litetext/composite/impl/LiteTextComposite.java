@@ -1,7 +1,6 @@
 package com.yarachkin.litetext.composite.impl;
 
 import com.yarachkin.litetext.composite.LiteTextComponent;
-import com.yarachkin.litetext.exception.CompositeLiteTextException;
 
 import java.util.ArrayList;
 
@@ -20,12 +19,8 @@ public class LiteTextComposite implements LiteTextComponent {
     }
 
     @Override
-    public LiteTextComponent getChild(int index) throws CompositeLiteTextException {
-        if ( index > 0 || index < components.size() - 1 ) {
-            return components.get(index);
-        }
-
-        throw new CompositeLiteTextException("Illegal index. Index = " + index);
+    public LiteTextComponent getChild(int index) {
+        return components.get(index);
     }
 
     @Override
@@ -45,10 +40,10 @@ public class LiteTextComposite implements LiteTextComponent {
 
     @Override
     public String toString() {
-        StringBuffer stringBuffer = new StringBuffer();
+        StringBuilder stringBuilder = new StringBuilder();
         for (int i = 0; i < components.size(); i++) {
-            stringBuffer.append(firstAdditionalText + components.get(i).toString() + lastAdditionalText);
+            stringBuilder.append(firstAdditionalText + components.get(i).toString() + lastAdditionalText);
         }
-        return stringBuffer.toString();
+        return stringBuilder.toString();
     }
 }

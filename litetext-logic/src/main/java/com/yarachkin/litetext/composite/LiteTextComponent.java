@@ -5,7 +5,7 @@ import com.yarachkin.litetext.exception.CompositeLiteTextException;
 public interface LiteTextComponent {
     void add(LiteTextComponent component);
 
-    LiteTextComponent getChild(int index) throws CompositeLiteTextException;
+    LiteTextComponent getChild(int index) throws CompositeLiteTextException, CloneNotSupportedException;
 
     void remove(LiteTextComponent component) throws CompositeLiteTextException;
 
