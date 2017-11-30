@@ -14,7 +14,7 @@ public class SwapLexemeAction {
             TextHandler textHandler = new TextHandler();
             LiteTextComponent component = textHandler.parse(text);
             for (LiteTextComponent paragraph : component.getComponents()) {
-                findSentences(paragraph);
+                handleSentences(paragraph);
             }
 
             return component;
@@ -23,7 +23,7 @@ public class SwapLexemeAction {
         }
     }
 
-    private static void findSentences(LiteTextComponent paragraph) throws CompositeLiteTextException {
+    private static void handleSentences(LiteTextComponent paragraph) throws CompositeLiteTextException {
         for (LiteTextComponent sentence : paragraph.getComponents()) {
             if ( sentence.getClass().getSimpleName().equals("LiteTextComposite") ) {
                 LiteTextComposite firstLexeme = new LiteTextComposite();
