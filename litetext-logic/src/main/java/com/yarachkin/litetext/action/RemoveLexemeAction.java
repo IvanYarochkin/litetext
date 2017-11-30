@@ -50,7 +50,7 @@ public class RemoveLexemeAction {
     private static int calculateLexemeSize(LiteTextComponent lexeme) throws CompositeLiteTextException {
         int lexemeSize = 0;
         for (LiteTextComponent element : lexeme.getComponents()) {
-            if ( element.getClass().getSimpleName().equals("Word") ) {
+            if ( element instanceof Word ) {
                 Word word = (Word) element;
                 lexemeSize += word.getWord().length();
             } else if ( element instanceof PunctuationMark ) {
@@ -65,7 +65,7 @@ public class RemoveLexemeAction {
         String firstSymbol = "";
 
         for (LiteTextComponent element : lexeme.getComponents()) {
-            if ( firstSymbol.isEmpty() && element.getClass().getSimpleName().equals("Word") ) {
+            if ( firstSymbol.isEmpty() && element instanceof Word ) {
                 Word word = (Word) element;
 
                 firstSymbol = Character.toString(word.getWord().charAt(0));
