@@ -8,9 +8,10 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class SentenceHandler implements BaseHandler {
-    private static final Pattern LEXEME_AND_EXPRESSION_PATTERN = Pattern.compile("((\\d|\\+|-\\d|--|i|j|\\*|/|\\()(\\d|\\+|-|i|j|\\*|/|\\(|\\)|\\s)+)|" +
-            "(\\w|\\()(\\w|\\.{3}|\\s-|-|\\?!|!\\?|[!?.,:;)])*");
-    private static final Pattern EXPRESSION_PATTERN = Pattern.compile("(\\d|\\+|-\\d|--|i|j|\\*|/|\\()(\\d|\\+|-|i|j|\\*|/|\\(|\\)|\\s)+");
+    private static final Pattern LEXEME_AND_EXPRESSION_PATTERN = Pattern.compile("((\\d|\\+|-\\d|--|i|j|\\*|/|\\()" +
+            "(\\d|\\+|-|i|j|\\*|/|\\(|\\)|\\s)+)|(\\w|\\()(\\w|\\.{3}|\\s-|-|\\?!|!\\?|[!?.,:;)])*");
+    private static final Pattern EXPRESSION_PATTERN = Pattern.compile("(\\d|\\+|-\\d|--|i|j|\\*|/|\\()" +
+            "(\\d|\\+|-|i|j|\\*|/|\\(|\\)|\\s)+");
 
     private LexemeHandler lexemeHandler = new LexemeHandler();
     private ExpressionHandler expressionHandler = new ExpressionHandler();

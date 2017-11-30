@@ -8,7 +8,6 @@ public class ExpressionHandler implements BaseHandler {
 
     @Override
     public LiteTextComponent parse(String text) {
-        LiteTextComponent expression = new Expression(text);
-        return expression;
+        return new Expression(text);
     }
 }

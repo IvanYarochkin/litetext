@@ -8,7 +8,6 @@ public class WordHandler implements BaseHandler {
 
     @Override
     public LiteTextComponent parse(String text) {
-        LiteTextComponent word = new Word(text);
-        return word;
+        return new Word(text);
     }
 }

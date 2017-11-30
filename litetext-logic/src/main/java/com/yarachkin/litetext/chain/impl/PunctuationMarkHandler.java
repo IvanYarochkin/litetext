@@ -8,7 +8,6 @@ public class PunctuationMarkHandler implements BaseHandler {
 
     @Override
     public LiteTextComponent parse(String text) {
-        LiteTextComponent punctuationMark = new PunctuationMark(text);
-        return punctuationMark;
+        return new PunctuationMark(text);
     }
 }
