@@ -15,7 +15,7 @@ import java.util.TreeMap;
 
 import static org.testng.Assert.assertEquals;
 
-public class SortingActionTest {
+public class SortingSentenceActionTest {
     private String filePath;
     private File testFile;
     private String testText;
@@ -49,7 +49,7 @@ public class SortingActionTest {
 
     @Test
     public void testPrintSentencesInAscendingOrder() throws Exception {
-        TreeMap<Integer, LiteTextComponent> sentences = SortingAction.printSentencesInAscendingOrder(LiteTextFileReader.getInstance().readFromFile());
+        TreeMap<Integer, LiteTextComponent> sentences = SortingSentenceAction.printSentencesInAscendingOrder(LiteTextFileReader.getInstance().readFromFile());
         ArrayList<Integer> actualLexemes = new ArrayList<>();
         sentences.entrySet().forEach(element -> actualLexemes.add(element.getKey()));
         expectedLexemes.add(17);

@@ -1,7 +1,6 @@
 package com.yarachkin.litetext.action;
 
 import com.yarachkin.litetext.chain.impl.TextHandler;
-import com.yarachkin.litetext.composite.LiteTextComponent;
 import com.yarachkin.litetext.converter.VariableStore;
 import com.yarachkin.litetext.filehelper.LiteTextFileHelper;
 import com.yarachkin.litetext.reader.LiteTextFileReader;

@@ -7,7 +7,7 @@ import com.yarachkin.litetext.exception.CompositeLiteTextException;
 
 import java.util.TreeMap;
 
-public class SortingAction {
+public class SortingSentenceAction {
     private static TreeMap<Integer, LiteTextComponent> sortedSentences;
 
     public static TreeMap<Integer, LiteTextComponent> printSentencesInAscendingOrder(String text) throws ChainLiteTextException, CompositeLiteTextException {
