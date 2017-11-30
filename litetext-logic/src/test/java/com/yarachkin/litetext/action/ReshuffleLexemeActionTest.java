@@ -2,6 +2,7 @@ package com.yarachkin.litetext.action;
 
 import com.yarachkin.litetext.chain.impl.TextHandler;
 import com.yarachkin.litetext.composite.LiteTextComponent;
+import com.yarachkin.litetext.converter.VariableStore;
 import com.yarachkin.litetext.filehelper.LiteTextFileHelper;
 import com.yarachkin.litetext.reader.LiteTextFileReader;
 import org.testng.annotations.AfterMethod;
@@ -23,6 +24,7 @@ public class ReshuffleLexemeActionTest {
 
     @BeforeMethod
     public void setUp() throws Exception {
+        VariableStore.initializeDefaultValues(0, 0);
         testFile = File.createTempFile("litetext_reshuffle_action_test", "txt");
         filePath = testFile.getAbsolutePath();
 
